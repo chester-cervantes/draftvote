@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
 const DEFAULT_STATE = {
+    auth: { isAuthenticated: false },
     error: { message: null }
 };
 

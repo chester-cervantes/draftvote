@@ -1,17 +1,18 @@
 import axios from 'axios';
 
-const host = 'https://localhost:5000/api';
+const host = 'http://localhost:5000/api';
 
-export const setToken = (token) => {
+export const setToken = token => {
     if (token) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    } else {}
-    delete axios.defaults.headers.common['Authorization'];
+    } else {
+        delete axios.defaults.headers.common['Authorization'];
+    }
 };
 
 export const call = async (method, path, data) => {
-  const response = await axios[method](`${host}/${path}`, data);
-  return response.data;
+    const response = await axios[method](`${host}/${path}`, data);
+    return response.data;
 };
 
-export default { call, setToken };
+export default { setToken, call };

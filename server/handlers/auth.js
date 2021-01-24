@@ -20,7 +20,9 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     try {
+        console.log("user ");
         const user = await db.User.findOne({ username: req.body.username });
+        console.log(user);
         const { id, username } = user;
         const valid = await user.comparePassword(req.body.password);
 
@@ -31,8 +33,8 @@ exports.login = async (req, res, next) => {
         } else {
             throw new Error();
         }
-    } catch(err) {
-        err.message = 'Invalid Username/Password';
-        next(err);
+    } catch(error) {
+        error.message = 'Invalid Username/Password';
+        return next(error);
     }
 };

@@ -1,8 +1,8 @@
 import { SET_CURRENT_USER } from "../actionType";
 
 const DEFAULT_STATE = {
-    user: {},
-    isAuthenticated: false
+    isAuthenticated: false,
+    user: {}
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -13,7 +13,7 @@ export default (state = DEFAULT_STATE, action) => {
                 // check user exists, 0 returns false, 1 returns true
                 isAuthenticated: !!Object.keys(action.user).length,
                 user: action.user
-            }
+            };
         default:
             return state;
     }
