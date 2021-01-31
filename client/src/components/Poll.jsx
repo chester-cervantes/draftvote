@@ -8,7 +8,7 @@ import {vote} from "../store/actions";
 const COLORS = ['#6699cc', '#CC4C4C'];
 
 function Poll(props) {
-    const {poll, vote} = props;
+    const {poll, vote, auth} = props;
 
     const answers = poll.options && poll.options.map(option => (
         <button
@@ -31,18 +31,22 @@ function Poll(props) {
         ]
     };
 
+    // Check if user already voted
+    const hasVoted = poll.voted.indexOf(auth.user.id) >= 0;
+
     return (
         <Fragment>
             <h3>{poll.championsBlue}</h3>
             <h3>{poll.championsRed}</h3>
             <div>{answers}</div>
-            {poll.options && <Pie data={data}/>}
+            {poll.options && hasVoted && <Pie data={data}/>}
         </Fragment>
     )
 
 }
 
 export default connect(store => ({
-        poll: store.currentPoll
+        poll: store.currentPoll,
+        auth: store.auth
     }), {vote}
 )(Poll);
