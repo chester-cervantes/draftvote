@@ -13,6 +13,7 @@ function Auth(props) {
         switch (event.target.name) {
             case "username":
                 setUsername(event.target.value);
+                console.log(username)
                 return;
             case "password":
                 setPassword(event.target.value);
@@ -35,6 +36,7 @@ function Auth(props) {
                     type="text"
                     value={username}
                     name="username"
+                    autoComplete="off"
                     onChange={e => handleChange(e)}
                 />
                 <label htmlFor="password">Password: </label>
@@ -42,6 +44,7 @@ function Auth(props) {
                     type="password"
                     value={password}
                     name="password"
+                    autoComplete="off"
                     onChange={e => handleChange(e)}
                 />
 

@@ -1,18 +1,19 @@
-import React, {useEffect} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import decode from 'jwt-decode';
 import {Provider} from 'react-redux';
+import {BrowserRouter as Router} from 'react-router-dom';
 
-import { store } from '../store';
+
+import {store} from '../store';
 import {setCurrentUser, setToken, addError} from "../store/actions";
-import Auth from "../components/Auth";
-import ErrorMessage from "../components/ErrorMessage";
+import RouteViews from "./RouteViews";
+import NavBar from "./NavBar";
 
 if (localStorage.jwtToken) {
     setToken(localStorage.jwtToken);
     try {
         store.dispatch(setCurrentUser(decode(localStorage.jwtToken)))
-    }
-    catch (err) {
+    } catch (err) {
         store.dispatch(setCurrentUser({}));
         store.dispatch(addError(err));
     }
@@ -20,9 +21,12 @@ if (localStorage.jwtToken) {
 
 const App = () => (
     <Provider store={store}>
-        <div>App works</div>
-        <Auth authType={'login'}/>
-        <ErrorMessage />
+        <Router>
+            <Fragment>
+                <NavBar/>
+                <RouteViews/>
+            </Fragment>
+        </Router>
     </Provider>
 );
 
