@@ -39,11 +39,11 @@ const RouteViews = ({auth, getCurrentPoll}) => (
                     <PollPage getPoll={id => getCurrentPoll(id)} {...props} isAuthenticated={auth.isAuthenticated} />
                 )}
             />
-            <Route
-                exact
-                path='/test'
-                render={() => <TestPage/>}
-            />
+            {/*<Route*/}
+            {/*    exact*/}
+            {/*    path='/test'*/}
+            {/*    render={() => <TestPage/>}*/}
+            {/*/>*/}
         </Switch>
     </main>
 );

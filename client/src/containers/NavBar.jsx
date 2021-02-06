@@ -17,9 +17,9 @@ const NavBar = ({auth, logout}) => (
                 <li>
                     <Link className='navbar-item' to='/login'>Login</Link>
                 </li>
-                <li>
-                    <Link className='navbar-item' to='/test'>Test</Link>
-                </li>
+                {/*<li>*/}
+                {/*    <Link className='navbar-item' to='/test'>Test</Link>*/}
+                {/*</li>*/}
                 <li>
                     <Link className='navbar-item' to='/poll/new'>Create</Link>
                 </li>
