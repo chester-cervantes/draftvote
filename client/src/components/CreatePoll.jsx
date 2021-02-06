@@ -29,6 +29,7 @@ function CreatePoll(props) {
             setChampionsBlue([topBlue, jungleBlue, midBlue, botBlue, supportBlue]);
             setChampionsRed([topRed, jungleRed, midRed, botRed, supportRed]);
         }
+
         test()
     }, [topBlue, jungleBlue, midBlue, botBlue, supportBlue, topRed, jungleRed, midRed, botRed, supportRed]);
 
@@ -43,12 +44,13 @@ function CreatePoll(props) {
     };
 
     return (
-        <div>
+        <div className="form">
             <table>
                 <tbody>
                 <tr>
                     <td>
                         <input
+                            className="form-input"
                             required
                             type='text'
                             name='topBlue'
@@ -59,6 +61,7 @@ function CreatePoll(props) {
                     </td>
                     <td>
                         <input
+                            className="form-input"
                             required
                             type='text'
                             name='topRed'
@@ -71,6 +74,7 @@ function CreatePoll(props) {
                 <tr>
                     <td>
                         <input
+                            className="form-input"
                             required
                             type='text'
                             name='jungleBlue'
@@ -80,6 +84,7 @@ function CreatePoll(props) {
                         /></td>
                     <td>
                         <input
+                            className="form-input"
                             required
                             type='text'
                             name='jungleRed'
@@ -92,6 +97,7 @@ function CreatePoll(props) {
                 <tr>
                     <td>
                         <input
+                            className="form-input"
                             required
                             type='text'
                             name='midBlue'
@@ -102,6 +108,7 @@ function CreatePoll(props) {
                     </td>
                     <td>
                         <input
+                            className="form-input"
                             required
                             type='text'
                             name='midRed'
@@ -114,6 +121,7 @@ function CreatePoll(props) {
                 <tr>
                     <td>
                         <input
+                            className="form-input"
                             required
                             type='text'
                             name='botBlue'
@@ -124,6 +132,7 @@ function CreatePoll(props) {
                     </td>
                     <td>
                         <input
+                            className="form-input"
                             required
                             type='text'
                             name='botRed'
@@ -137,6 +146,7 @@ function CreatePoll(props) {
                     <td>
 
                         <input
+                            className="form-input"
                             required
                             type='text'
                             name='supportBlue'
@@ -148,6 +158,7 @@ function CreatePoll(props) {
                     <td>
 
                         <input
+                            className="form-input"
                             required
                             type='text'
                             name='supportRed'
@@ -170,11 +181,13 @@ function CreatePoll(props) {
                     name='championsRed'
                     value={championsRed}
                 />
-                <button
-                    type='submit'>
-                    Submit
-                </button>
-
+                <div className="buttons_center">
+                    <button
+                        className="button"
+                        type='submit'>
+                        Submit
+                    </button>
+                </div>
             </form>
         </div>
     )
@@ -184,197 +197,3 @@ function CreatePoll(props) {
 // First param takes in the store and returns object of error: store.error
 // Maps the store's error to the component's prop
 export default withRouter(connect(() => ({}), {createPoll})(CreatePoll))
-
-
-// import React, {useState, useEffect} from 'react';
-// import {connect} from "react-redux";
-//
-// import {createPoll} from "../store/actions";
-//
-// import {withRouter} from 'react-router-dom';
-//
-// const BLUE = "blue";
-// const RED = "red";
-//
-// // destructure {error} instead of using props so we don't have to type props.error
-//
-// class CreatePoll extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             topBlue: '',
-//             jungleBlue: '',
-//             midBlue: '',
-//             botBlue: '',
-//             supportBlue: '',
-//             topRed: '',
-//             jungleRed: '',
-//             midRed: '',
-//             botRed: '',
-//             supportRed: '',
-//             championsBlue: '',
-//             championsRed: ''
-//         };
-//
-//         this.handleChange = this.handleChange.bind(this);
-//         this.handleSubmit = this.handleSubmit.bind(this);
-//     }
-//
-//     handleSubmit(event) {
-//         event.preventDefault();
-//         const state = {
-//             championsBlue: this.state.championsBlue,
-//             championsRed: this.state.championsRed,
-//             options: [BLUE, RED]
-//         };
-//         console.log(state);
-//         this.props.createPoll(state);
-//     };
-//
-//     handleChange(e) {
-//         this.setState({ [e.target.name]: e.target.value });
-//     }
-//
-//     render() {
-//         return (
-//             <div>
-//                 <table>
-//                     <tbody>
-//                     <tr>
-//                         <td>
-//                             <input
-//                                 required
-//                                 type='text'
-//                                 name='topBlue'
-//                                 id='topBlue'
-//                                 value={this.state.topBlue}
-//                                 onChange={e => this.handleChange(e)}
-//                             />
-//                         </td>
-//                         <td>
-//                             <input
-//                                 required
-//                                 type='text'
-//                                 name='topRed'
-//                                 id='topRed'
-//                                 value={this.state.topRed}
-//                                 onChange={e => this.handleChange(e)}
-//                             />
-//                         </td>
-//                     </tr>
-//                     <tr>
-//                         <td>
-//                             <input
-//                                 required
-//                                 type='text'
-//                                 name='jungleBlue'
-//                                 id='jungleBlue'
-//                                 value={this.state.jungleBlue}
-//                                 onChange={e => this.handleChange(e)}
-//                             /></td>
-//                         <td>
-//                             <input
-//                                 required
-//                                 type='text'
-//                                 name='jungleRed'
-//                                 id='jungleRed'
-//                                 value={this.state.jungleRed}
-//                                 onChange={e => this.handleChange(e)}
-//                             />
-//                         </td>
-//                     </tr>
-//                     <tr>
-//                         <td>
-//                             <input
-//                                 required
-//                                 type='text'
-//                                 name='midBlue'
-//                                 id='midBlue'
-//                                 value={this.state.midBlue}
-//                                 onChange={e => this.handleChange(e)}
-//                             />
-//                         </td>
-//                         <td>
-//                             <input
-//                                 required
-//                                 type='text'
-//                                 name='midRed'
-//                                 id='midRed'
-//                                 value={this.state.midRed}
-//                                 onChange={e => this.handleChange(e)}
-//                             />
-//                         </td>
-//                     </tr>
-//                     <tr>
-//                         <td>
-//                             <input
-//                                 required
-//                                 type='text'
-//                                 name='botBlue'
-//                                 id='botBlue'
-//                                 value={this.state.botBlue}
-//                                 onChange={e => this.handleChange(e)}
-//                             />
-//                         </td>
-//                         <td>
-//                             <input
-//                                 required
-//                                 type='text'
-//                                 name='botRed'
-//                                 id='botRed'
-//                                 value={this.state.botRed}
-//                                 onChange={e => this.handleChange(e)}
-//                             />
-//                         </td>
-//                     </tr>
-//                     <tr>
-//                         <td>
-//
-//                             <input
-//                                 required
-//                                 type='text'
-//                                 name='supportBlue'
-//                                 id='supportBlue'
-//                                 value={this.state.supportBlue}
-//                                 onChange={e => this.handleChange(e)}
-//                             />
-//                         </td>
-//                         <td>
-//
-//                             <input
-//                                 required
-//                                 type='text'
-//                                 name='supportRed'
-//                                 id='supportRed'
-//                                 value={this.state.supportRed}
-//                                 onChange={e => this.handleChange(e)}
-//                             />
-//                         </td>
-//                     </tr>
-//                     </tbody>
-//                 </table>
-//                 <form onSubmit={e => this.handleSubmit(e)}>
-//                     <input
-//                         type='hidden'
-//                         name='championsBlue'
-//                         value={this.state.championsBlue}
-//                     />
-//                     <input
-//                         type='hidden'
-//                         name='championsRed'
-//                         value={this.state.championsRed}
-//                     />
-//                     <button
-//                         type='submit'>
-//                         Submit
-//                     </button>
-//
-//                 </form>
-//             </div>
-//         )}
-// };
-//
-//
-// // First param takes in the store and returns object of error: store.error
-// // Maps the store's error to the component's prop
-// export default withRouter(connect(() => ({}), {createPoll})(CreatePoll))

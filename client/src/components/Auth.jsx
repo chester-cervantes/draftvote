@@ -7,7 +7,7 @@ function Auth(props) {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { authType } = props;
+    const {authType} = props;
 
     const handleChange = event => {
         switch (event.target.name) {
@@ -25,22 +25,24 @@ function Auth(props) {
 
     const handleSubmit = event => {
         event.preventDefault();
-        props.authUser(authType || 'login' , { username, password });
+        props.authUser(authType || 'login', {username, password});
     };
 
     return (
         <div>
-            <form onSubmit={e => handleSubmit(e)}>
-                <label htmlFor="username">Username: </label>
+            <form className="form" onSubmit={e => handleSubmit(e)}>
+                <label className="form-label" htmlFor="username">Username: </label>
                 <input
+                    className="form-input"
                     type="text"
                     value={username}
                     name="username"
                     autoComplete="off"
                     onChange={e => handleChange(e)}
                 />
-                <label htmlFor="password">Password: </label>
+                <label className="form-label" htmlFor="password">Password: </label>
                 <input
+                    className="form-input"
                     type="password"
                     value={password}
                     name="password"
@@ -48,7 +50,9 @@ function Auth(props) {
                     onChange={e => handleChange(e)}
                 />
 
-                <button type="submit">Submit</button>
+                <div className="buttons_center">
+                    <button className="button" type="submit">Submit</button>
+                </div>
             </form>
         </div>
     )

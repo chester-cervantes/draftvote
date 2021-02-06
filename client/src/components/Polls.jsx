@@ -11,13 +11,26 @@ function handleSelect(id, props) {
     history.push(`/poll/${id}`);
 }
 
+function formatTitle(championsBlue, championsRed) {
+    let text = "";
+    let i;
+    if (championsBlue && championsRed) {
+        for (i = 0; i < championsBlue.length - 1; i++) {
+            text += championsBlue[i] + ", ";
+        }
+        text += championsBlue[i] + " || ";
+        for (i = 0; i < championsRed.length - 1; i++) {
+            text += championsRed[i] + ", ";
+        }
+        text += championsRed[i];
+    }
+    return text
+}
+
 function Polls(props) {
-    console.log("Polls!!!!");
-    console.log(props);
-    console.log(props.polls);
 
     const polls = props.polls.map(
-        poll => <li onClick={() => handleSelect(poll._id, props)} key={poll._id}>{poll.championsBlue}{poll.championsRed}</li>
+        poll => <li onClick={() => handleSelect(poll._id, props)} key={poll._id}>{formatTitle(poll.championsBlue, poll.championsRed)}</li>
     );
 
     const {auth, getPolls, getUserPolls} = props;
@@ -30,12 +43,12 @@ function Polls(props) {
     return (
         <Fragment>
             {auth.isAuthenticated && (
-                <div>
-                    <button onClick={getPolls}>All Polls</button>
-                    <button onClick={getUserPolls}>My Polls</button>
+                <div className="buttons_center">
+                    <button className="button" onClick={getPolls}>All Polls</button>
+                    <button className="button" onClick={getUserPolls}>My Polls</button>
                 </div>
             )}
-            <ul>{polls}</ul>
+            <ul className="polls">{polls}</ul>
         </Fragment>
     )
 

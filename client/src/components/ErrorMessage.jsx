@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 // destructure {error} instead of using props so we don't have to type props.error
 const ErrorMessage = ({ error }) => (
-    <div>{ error && <div>{error.message}</div> }</div>
+    <div>{ error.message && <div className="error">{error.message}</div> }</div>
 );
 
 
