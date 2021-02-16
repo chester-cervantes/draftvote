@@ -2,3 +2,28 @@
     background-image: url(https://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/Aatrox.png);
     border: black;
 }
+
+img {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.champion-container {
+    padding: 10px;
+    margin: 2px;
+    background-color: white;
+}
+
+.champion-selected {
+    background-color: darkorange;
+}
+
+.pick-container {
+    padding: 10px;
+    margin: 2px;
+    background-color: midnightblue;
+}
+
+.pick-selected {
+    background-color: darkgoldenrod;
+}
