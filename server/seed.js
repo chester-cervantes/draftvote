@@ -17,14 +17,30 @@ const polls = [
     {
         questions: 'Which team won draft?',
         options: ['Blue', 'Red'],
-        championsBlue: ['pantheon', 'taliyah', 'orianna', 'kaisa', 'leona'],
-        championsRed: ['shen', 'graves', 'viktor', 'missfortune', 'maokai']
+        topBlue: "Aatrox",
+        jungleBlue: "Annie",
+        midBlue: "Blitzcrank",
+        botBlue: "Anivia",
+        supportBlue: "Bard",
+        topRed: "Ashe",
+        jungleRed: "Braum",
+        midRed: "Camille",
+        botRed: "Caitlyn",
+        supportRed: "Akali"
     },
     {
         questions: 'Which team won draft?',
         options: ['Blue', 'Red'],
-        championsBlue: ['renekton', 'nidalee', 'syndra', 'kaisa', 'alistar'],
-        championsRed: ['aatrox', 'graves', 'orianna', 'aphelios', 'thresh']
+        topBlue: "Corki",
+        jungleBlue: "Darius",
+        midBlue: "Blitzcrank",
+        botBlue: "Anivia",
+        supportBlue: "Bard",
+        topRed: "Ashe",
+        jungleRed: "Diana",
+        midRed: "Camille",
+        botRed: "Caitlyn",
+        supportRed: "Evelynn"
     }
 ];
 const seed = async () => {

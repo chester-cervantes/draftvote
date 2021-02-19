@@ -12,17 +12,17 @@ const NavBar = ({auth, logout}) => (
                     <Link className="navbar-brand" to='/'>Home</Link>
                 </li>
                 <li>
+                    <Link className='navbar-item' to='/poll/new'>Create</Link>
+                </li>
+                <li>
                     <Link className='navbar-item' to='/register'>Register</Link>
                 </li>
                 <li>
                     <Link className='navbar-item' to='/login'>Login</Link>
                 </li>
-                <li>
-                    <Link className='navbar-item' to='/test'>Test</Link>
-                </li>
-                <li>
-                    <Link className='navbar-item' to='/poll/new'>Create</Link>
-                </li>
+                {/*<li>*/}
+                {/*    <Link className='navbar-item' to='/test'>Test</Link>*/}
+                {/*</li>*/}
                 <li>
                     <a className='navbar-item' onClick={logout}>Logout</a>
                 </li>

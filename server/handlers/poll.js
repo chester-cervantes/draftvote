@@ -12,13 +12,33 @@ exports.showPolls = async (req, res, next) => {
 };
 
 exports.createPoll = async (req, res, next) => {
-    const { id } = req.decoded;
-    const { championsBlue, championsRed, options } = req.body;
+    const {id} = req.decoded;
+    const {
+        topBlue,
+        jungleBlue,
+        midBlue,
+        botBlue,
+        supportBlue,
+        topRed,
+        jungleRed,
+        midRed,
+        botRed,
+        supportRed,
+        options
+    } = req.body;
     try {
         const user = await db.User.findById(id);
         const poll = await db.Poll.create({
-            championsBlue,
-            championsRed,
+            topBlue,
+            jungleBlue,
+            midBlue,
+            botBlue,
+            supportBlue,
+            topRed,
+            jungleRed,
+            midRed,
+            botRed,
+            supportRed,
             user,
             options: options.map(option => ({
                 option,
@@ -37,12 +57,12 @@ exports.createPoll = async (req, res, next) => {
 
 exports.usersPolls = async (req, res, next) => {
     try {
-        const { id } = req.decoded;
+        const {id} = req.decoded;
 
         const user = await db.User.findById(id).populate('polls');
 
         res.status(200).json(user.polls);
-    } catch(err) {
+    } catch (err) {
         err.status = 400;
         next(err);
     }
@@ -50,7 +70,7 @@ exports.usersPolls = async (req, res, next) => {
 
 exports.getPoll = async (req, res, next) => {
     try {
-        const { id } = req.params;
+        const {id} = req.params;
 
         const poll = await db.Poll
             .findById(id)
@@ -67,8 +87,8 @@ exports.getPoll = async (req, res, next) => {
 
 exports.deletePoll = async (req, res, next) => {
     try {
-        const { id: pollId } = req.params;
-        const { id: userId } = req.decoded;
+        const {id: pollId} = req.params;
+        const {id: userId} = req.decoded;
 
         const poll = await db.Poll.findById(pollId);
 
@@ -88,9 +108,9 @@ exports.deletePoll = async (req, res, next) => {
 
 exports.vote = async (req, res, next) => {
     try {
-        const { id: pollId } = req.params;
-        const { id: userId } = req.decoded;
-        const { answer } = req.body;
+        const {id: pollId} = req.params;
+        const {id: userId} = req.decoded;
+        const {answer} = req.body;
 
         if (answer) {
             const poll = await db.Poll.findById(pollId);
