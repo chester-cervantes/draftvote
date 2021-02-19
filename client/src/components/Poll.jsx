@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {Pie} from 'react-chartjs-2';
 
@@ -68,9 +68,24 @@ function Poll(props) {
         replaceImages();
     }, []);
 
-    const make = () => {
+    const make = (champion, role) => {
+        let src = "http://ddragon.leagueoflegends.com/cdn/11.3.1/img/champion/" + champion + ".png";
+        let element = React.createElement("div", {
+                className: "pick-container",
+                id: role
+            },
+            [
+                React.createElement("img", {src: src, alt: role}),
+                React.createElement("p", {}, champion)
+            ]
+        );
+        console.log("pls work")
+        console.log(champion)
+        console.log(role)
 
-    }
+        console.log(element)
+        return element;
+    };
 
     return (
         <Fragment>
@@ -96,70 +111,20 @@ function Poll(props) {
                 <Row>
                     <Col sm={6}>
                         <div className="blue-side">
-                            <div className="pick-container" id="topBlue">
-                                <img
-                                    src="http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/-1.png"
-                                    alt="none"/>
-                                <p>&nbsp;{poll.topBlue}</p>
-                            </div>
-                            <div className="pick-container" id="jungleBlue">
-                                <img
-                                    src="http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/-1.png"
-                                    alt="none"/>
-                                <p>&nbsp;{poll.jungleBlue}</p>
-                            </div>
-                            <div className="pick-container" id="midBlue">
-                                <img
-                                    src="http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/-1.png"
-                                    alt="none"/>
-                                <p>&nbsp;{poll.midBlue}</p>
-                            </div>
-                            <div className="pick-container" id="botBlue">
-                                <img
-                                    src="http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/-1.png"
-                                    alt="none"/>
-                                <p>&nbsp;{poll.botBlue}</p>
-                            </div>
-                            <div className="pick-container" id="supportBlue">
-                                <img
-                                    src="http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/-1.png"
-                                    alt="none"/>
-                                <p>&nbsp;{poll.supportBlue}</p>
-                            </div>
+                            {poll.topBlue && make(poll.topBlue, "topBlue")}
+                            {poll.jungleBlue && make(poll.jungleBlue, "jungleBlue")}
+                            {poll.midBlue && make(poll.midBlue, "midBlue")}
+                            {poll.botBlue && make(poll.botBlue, "botBlue")}
+                            {poll.supportBlue && make(poll.supportBlue, "supportBlue")}
                         </div>
                     </Col>
                     <Col sm={6}>
                         <div className="red-side">
-                            <div className="pick-container" id="topRed">
-                                <img
-                                    src="http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/-1.png"
-                                    alt="none"/>
-                                <p>&nbsp;{poll.topRed}</p>
-                            </div>
-                            <div className="pick-container" id="jungleRed">
-                                <img
-                                    src="http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/-1.png"
-                                    alt="none"/>
-                                <p>&nbsp;{poll.jungleRed}</p>
-                            </div>
-                            <div className="pick-container" id="midRed">
-                                <img
-                                    src="http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/-1.png"
-                                    alt="none"/>
-                                <p>&nbsp;{poll.midRed}</p>
-                            </div>
-                            <div className="pick-container" id="botRed">
-                                <img
-                                    src="http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/-1.png"
-                                    alt="none"/>
-                                <p>&nbsp;{poll.botRed}</p>
-                            </div>
-                            <div className="pick-container" id="supportRed">
-                                <img
-                                    src="http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/-1.png"
-                                    alt="none"/>
-                                <p>&nbsp;{poll.supportRed}</p>
-                            </div>
+                            {poll.topRed && make(poll.topRed, "topRed")}
+                            {poll.jungleRed && make(poll.jungleRed, "jungleRed")}
+                            {poll.midRed && make(poll.midRed, "midRed")}
+                            {poll.botRed && make(poll.botRed, "botRed")}
+                            {poll.supportRed && make(poll.supportRed, "supportRed")}
                         </div>
                     </Col>
                 </Row>
