@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect} from 'react';
 import {connect} from 'react-redux';
 
-import { getPolls, getUserPolls, getCurrentPoll } from "../store/actions";
+import {getPolls, getUserPolls, getCurrentPoll} from "../store/actions";
 
 
 // Changes HomePage to PollPage
@@ -11,18 +11,10 @@ function handleSelect(id, props) {
     history.push(`/poll/${id}`);
 }
 
-function formatTitle(championsBlue, championsRed) {
+function formatTitle(topBlue, jungleBlue, midBlue, botBlue, supportBlue, topRed, jungleRed, midRed, botRed, supportRed) {
     let text = "";
-    let i;
-    if (championsBlue && championsRed) {
-        for (i = 0; i < championsBlue.length - 1; i++) {
-            text += championsBlue[i] + ", ";
-        }
-        text += championsBlue[i] + " || ";
-        for (i = 0; i < championsRed.length - 1; i++) {
-            text += championsRed[i] + ", ";
-        }
-        text += championsRed[i];
+    if (topBlue && jungleBlue && midBlue && botBlue && supportBlue && topRed && jungleRed && midRed && botRed && supportRed) {
+        text = topBlue + ', ' + jungleBlue + ', ' + midBlue + ', ' + botBlue + ', ' + supportBlue + " vs " + topRed + ', ' + jungleRed + ', ' + midRed + ', ' + botRed + ', ' + supportRed
     }
     return text
 }
@@ -30,13 +22,15 @@ function formatTitle(championsBlue, championsRed) {
 function Polls(props) {
 
     const polls = props.polls.map(
-        poll => <li onClick={() => handleSelect(poll._id, props)} key={poll._id}>{formatTitle(poll.championsBlue, poll.championsRed)}</li>
+        poll => <li onClick={() => handleSelect(poll._id, props)}
+                    key={poll._id}>{formatTitle(poll.topBlue, poll.jungleBlue, poll.midBlue,
+            poll.botBlue, poll.supportBlue, poll.topRed, poll.jungleRed, poll.midRed, poll.botRed, poll.supportRed)}</li>
     );
 
     const {auth, getPolls, getUserPolls} = props;
 
     useEffect(() => {
-        const { getPolls } = props;
+        const {getPolls} = props;
         getPolls();
     }, []);
 
@@ -55,7 +49,7 @@ function Polls(props) {
 }
 
 export default connect(store => ({
-    auth: store.auth,
-    polls: store.polls
-}), { getPolls, getUserPolls, getCurrentPoll }
+        auth: store.auth,
+        polls: store.polls
+    }), {getPolls, getUserPolls, getCurrentPoll}
 )(Polls);

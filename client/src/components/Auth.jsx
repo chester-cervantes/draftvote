@@ -13,7 +13,6 @@ function Auth(props) {
         switch (event.target.name) {
             case "username":
                 setUsername(event.target.value);
-                console.log(username)
                 return;
             case "password":
                 setPassword(event.target.value);
