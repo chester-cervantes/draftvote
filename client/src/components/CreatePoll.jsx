@@ -278,7 +278,7 @@ function CreatePoll(props) {
                                 <img src="http://ddragon.leagueoflegends.com/cdn/11.3.1/img/champion/Ahri.png"
                                      alt="Ahri"/>
                             </div>
-                            <div className="champion-container" id="Aatrox" onClick={(e) => handleHover(e)}>
+                            <div className="champion-container" id="Akali" onClick={(e) => handleHover(e)}>
                                 <img src="http://ddragon.leagueoflegends.com/cdn/11.3.1/img/champion/Akali.png"
                                      alt="Akali"/>
                             </div>
